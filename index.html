@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time Object Scanner</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- TensorFlow.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <!-- COCO-SSD model -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <main class="container">
+    <div class="header">
+      <h1 class="title">
+        <i data-lucide="camera" class="icon"></i>
+        Object Scanner
+      </h1>
+    </div>
+
+    <div class="card">
+      <div class="scanner-container">
+        <div id="start-message" class="start-message">Press Start Scanning to begin</div>
+        <video id="video" autoplay playsinline muted></video>
+        <canvas id="canvas"></canvas>
+        <div id="loading" class="loading">
+          <div class="spinner"></div>
+          <p>Loading object detection model...</p>
+        </div>
+        <div id="error" class="error hidden">
+          <div class="error-icon">
+            <i data-lucide="alert-circle" class="icon"></i>
+          </div>
+          <p id="error-message"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="scan-btn" class="button primary">
+        <i data-lucide="camera" class="icon"></i>
+        Start Scanning
+      </button>
+      <button id="mute-btn" class="button outline">
+        <i data-lucide="volume-2" class="icon"></i>
+        Mute
+      </button>
+    </div>
+
+    <footer class="footer">
+      <p>
+        This app uses TensorFlow.js and the COCO-SSD model to detect objects in real-time. No images are sent to any
+        server - all processing happens directly in your browser.
+      </p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
